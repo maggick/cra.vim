@@ -2,6 +2,15 @@ autocmd! BufWritePost cra.vim source ~/.vim/bundle/cra.vim/plugin/cra.vim
 
 let g:HeaderHeight = 2
 
+let g:NbCPPerYear = 22
+let g:NbRTPerYear = 9
+
+let g:WWCol = 96
+let g:CPCol = WWCol + 3
+let g:RTCol = WWCol + 3 + 3
+let g:CECol = WWCol + 3 + 3 + 3
+let g:MACol = WWCol + 3 + 3 + 3 + 3
+
 function! Bootstrap(year)
     let i = 1
     call Headerq()
@@ -67,7 +76,7 @@ function! NbMA()
 endfunction
 
 function! Nbs()
-    return NbWork() . ' ' . NbCP() . ' ' . NbRT() . ' ' . NbCE() . ' ' .  NbMA() . '|' . printf('%2s', GetTotalCP(line('.')-8)) . ' ' .  printf('%2s', GetTotalRT(line('.')-8))
+    return NbWork() . ' ' . NbCP() . ' ' . NbRT() . ' ' . NbCE() . ' ' .  NbMA() . '|' . printf('%2s', GetTotalCP(line('.') - g:HeaderHeight)) . ' ' .  printf('%2s', GetTotalRT(line('.') - g:HeaderHeight))
 endfunction
 
 function! Sum(pos)
@@ -81,27 +90,27 @@ function! Sum(pos)
 endfunction
 
 function! SumWW()
-    return Sum(96)
+    return Sum(WWCol)
 endfunction
 
 function! SumCP()
-    return Sum(99)
+    return Sum(CPCol)
 endfunction
 
 function! SumRT()
-    return Sum(96 + 3 + 3)
+    return Sum(RTCol)
 endfunction
 
 function! SumCE()
-    return Sum(96 + 3 + 3 + 3)
+    return Sum(CECol)
 endfunction
 
 function! SumMA()
-    return Sum(96 + 3 + 3 + 3 + 3)
+    return Sum(MACol)
 endfunction
 
 function! GetCP(month)
-    return substitute(strpart(getline(a:month+g:HeaderHeight), 99, 2), ' ', '', 'g')
+    return substitute(strpart(getline(a:month+g:HeaderHeight), CPCol, 2), ' ', '', 'g')
 endfunction
 
 function! GetTotalCP(month)
@@ -110,7 +119,7 @@ function! GetTotalCP(month)
         let prev = 18
     elseif (a:month == 6)
         " remove code duplicate
-        let prev = 22 + substitute(strpart(getline(a:month - 1 + g:HeaderHeight), 111, 2), ' ', '', 'g')
+        let prev = g:NbCPPerYear + substitute(strpart(getline(a:month - 1 + g:HeaderHeight), 111, 2), ' ', '', 'g')
     else
         let prev = substitute(strpart(getline(a:month - 1 + g:HeaderHeight), 111, 2), ' ', '', 'g')
     endif
@@ -119,12 +128,12 @@ function! GetTotalCP(month)
 endfunction
 
 function! GetRT(month)
-    return substitute(strpart(getline(a:month + g:HeaderHeight), 99+3, 2), ' ', '', 'g')
+    return substitute(strpart(getline(a:month + g:HeaderHeight), RTCol, 2), ' ', '', 'g')
 endfunction
 
 function! GetTotalRT(month)
     if (a:month == 1)
-        let prev = 9
+        let prev = g:NbRTPerYear
     else
         let prev = substitute(strpart(getline(a:month - 1 + g:HeaderHeight), 111+3, 2), ' ', '', 'g')
     endif
