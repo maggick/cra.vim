@@ -76,41 +76,29 @@ function! NbMA()
 endfunction
 
 function! Nbs()
-    return NbWork() . ' ' . NbCP() . ' ' . NbRT() . ' ' . NbCE() . ' ' .  NbMA() . '|' . printf('%2s', GetTotalCP(line('.') - g:HeaderHeight)) . ' ' .  printf('%2s', GetTotalRT(line('.') - g:HeaderHeight))
+    let monthlyCounters  = []
+    call add(monthlyCounters,NbWork())
+    call add(monthlyCounters,NbCP())
+    call add(monthlyCounters,NbRT())
+    call add(monthlyCounters,NbCE())
+    call add(monthlyCounters,NbMA())
+
+    let soldeCounters  = []
+    call add(soldeCounters, printf('%2s', GetTotalCP(line('.') - g:HeaderHeight)))
+    call add(soldeCounters, printf('%2s', GetTotalRT(line('.') - g:HeaderHeight)))
+
+    return join(monthlyCounters, ' ') . '|' . join(soldeCounters, '|')
 endfunction
 
-function! Sum(pos)
-    let l = 9
-    let s = 0
-    while l <= 20
-        let s = s + substitute(strpart(getline(l), a:pos, 2), ' ', '', 'g')
-        let l = l + 1
-    endwhile
-    return s
-endfunction
+"method list(1,2,3) -> " 1  2  3" : 2 digits formatting and space separated
 
-function! SumWW()
-    return Sum(WWCol)
+"remove beggining space for avoid vim coercion strangeness
+function! GetValueAsNum(month, pos)
+    return substitute(strpart(getline(a:month+g:HeaderHeight), a:pos, 2), ' ', '', 'g')
 endfunction
-
-function! SumCP()
-    return Sum(CPCol)
-endfunction
-
-function! SumRT()
-    return Sum(RTCol)
-endfunction
-
-function! SumCE()
-    return Sum(CECol)
-endfunction
-
-function! SumMA()
-    return Sum(MACol)
-endfunction
-
+    
 function! GetCP(month)
-    return substitute(strpart(getline(a:month+g:HeaderHeight), CPCol, 2), ' ', '', 'g')
+    return GetValueAsNum(a:month, CPCol)
 endfunction
 
 function! GetTotalCP(month)
@@ -119,23 +107,23 @@ function! GetTotalCP(month)
         let prev = 18
     elseif (a:month == 6)
         " remove code duplicate
-        let prev = g:NbCPPerYear + substitute(strpart(getline(a:month - 1 + g:HeaderHeight), 111, 2), ' ', '', 'g')
+        let prev = g:NbCPPerYear + GetValueAsNum(a:month - 1, 111)
     else
-        let prev = substitute(strpart(getline(a:month - 1 + g:HeaderHeight), 111, 2), ' ', '', 'g')
+        let prev = GetValueAsNum(a:month - 1, 111)
     endif
     "return prev - GetCP(a:month)
     return prev - substitute(NbCP(), ' ', '', 'g')
 endfunction
 
 function! GetRT(month)
-    return substitute(strpart(getline(a:month + g:HeaderHeight), RTCol, 2), ' ', '', 'g')
+    return GetValueAsNum(a:month, RTCol)
 endfunction
 
 function! GetTotalRT(month)
     if (a:month == 1)
         let prev = g:NbRTPerYear
     else
-        let prev = substitute(strpart(getline(a:month - 1 + g:HeaderHeight), 111+3, 2), ' ', '', 'g')
+        let prev = GetValueAsNum(a:month - 1, 111 + 3)
     endif
     return prev - substitute(NbRT(), ' ', '', 'g')
 endfunction
