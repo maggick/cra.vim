@@ -2,6 +2,7 @@
 yearly timesheet for Vim
 
 * realtime counter for holiday (while there is a shift of one month on paychecks)
+* get rid of Libreoffice (or worse Excel) to do this
 
 How to use it
 
@@ -24,3 +25,19 @@ Here is the list of values
 ## Step 3 : Automatic calculation of counters
 
 `:3,$normal ,cf`
+
+## Example
+                                                                                                   |    MENSUEL   |SOLDE
+        1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31|WW CP RT CE MA|CP RT
+     1 XX WW WW XX XX XX CP CP CP CP XX XX XX CP CP CP CP XX XX XX MA MA MA MA XX XX XX WW WW WW WW| 6  8  0  0  4|10  9
+     2 XX XX XX CE WW WW WW XX XX XX CE WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW -- -- --|14  0  0  2  0|10  9
+     3 XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX|16  0  0  0  0|10  9
+     4 XX WW WW WW XX XX XX WW WW WW CP XX XX XX WW WW WW CE XX XX XX WW WW WW WW XX XX XX WW WW --|15  1  0  1  0| 9  9
+     5 XX CP XX XX XX CP CP XX XX XX XX XX WW WW WW WW XX XX XX CP WW WW WW XX XX XX WW WW WW CE XX|10  4  0  1  0| 5  9
+     6 XX XX CE WW CP WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX CP CP CP CP XX XX XX --|10  5  0  1  0|22  9
+     7 WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW|19  0  0  0  0|22  9
+     8 WW WW XX XX WW WW WW WW XX XX XX RT RT RT XX XX XX XX RT RT RT RT XX XX XX WW WW WW WW XX XX|10  0  7  0  0|22  2
+     9 XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX CE CE WW WW XX XX XX WW WW WW WW XX XX XX WW --|15  0  0  2  0|22  2
+    10 WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW|19  0  0  0  0|22  2
+    11 WW XX XX WW WW WW WW XX XX XX XX WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX --|16  0  0  0  0|22  2
+    12 XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW XX RT XX XX XX RT CP|14  1  2  0  0|21  0
