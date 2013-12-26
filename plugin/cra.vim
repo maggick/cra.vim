@@ -22,7 +22,7 @@ function! Bootstrap(year)
 endfunction
 
 function! Headerq()
-   execute "normal! i                                                                                                    MENSUEL   |SOLDE\<ESC>"
+   execute "normal! i                                                                                               |    MENSUEL   |SOLDE\<ESC>"
    execute "normal! o\<ESC>0i    1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31|WW CP RT CE MA|CP RT\<ESC>"
 endfunction
 
@@ -48,7 +48,7 @@ function! Line(year, month)
         let s = s . sday . ' '
         let i = i + 1
     endwhile
-    return s
+    return strpart(s, 0, len(s) - 1) . '|'
 endfunction
 
 function! GenericNb(pat)
@@ -87,7 +87,7 @@ function! Nbs()
     call add(soldeCounters, printf('%2s', GetTotalCP(line('.') - g:HeaderHeight)))
     call add(soldeCounters, printf('%2s', GetTotalRT(line('.') - g:HeaderHeight)))
 
-    return join(monthlyCounters, ' ') . '|' . join(soldeCounters, '|')
+    return join(monthlyCounters, ' ') . '|' . join(soldeCounters, ' ')
 endfunction
 
 "method list(1,2,3) -> " 1  2  3" : 2 digits formatting and space separated
