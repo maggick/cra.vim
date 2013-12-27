@@ -25,9 +25,9 @@ How to use it
 
 With prettify
 
-    ```vim
-    :call Bootstrap(2014)
-    ```
+```vim
+:call Bootstrap(2014)
+```
 
 Saturday and Sunday are pre-filled with `XX`
 
