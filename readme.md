@@ -23,6 +23,8 @@ How to use it
 
     :call Bootstrap(2014)
 
+With prettify
+
     ```vim
     :call Bootstrap(2014)
     ```
