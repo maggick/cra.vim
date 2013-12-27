@@ -25,13 +25,15 @@ How to use it
     let g:NbRTPerYear = 9
     ```
 
-## Step 1 : Generate the timesheet for a given year
+## Step 1 : Generate the timesheet for a given year and a country
 
 ```vim
-:call Bootstrap(2014)
+:call Bootstrap(2014, 'fr')
 ```
 
 Saturday and Sunday are pre-filled with `XX`
+
+Public Holiday are pre-filled with `FE`. Only french public holiday for year 2014 are known.
 
 ## Step 2 : Fill the timesheet by replacing `--` with a value
 
