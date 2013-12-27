@@ -19,11 +19,13 @@ How to use it
 
     let g:NbRTPerYear = 9
 
-if !exists("g:NbRemainingCP")
-
 ## Step 1 : Generate the timesheet for a given year
 
-`:call Bootstrap(2014)`
+    :call Bootstrap(2014)
+
+    ```vim
+    :call Bootstrap(2014)
+    ```
 
 Saturday and Sunday are pre-filled with `XX`
 
