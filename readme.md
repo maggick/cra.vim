@@ -9,21 +9,23 @@ How to use it
 ## Step 0 : (Optionnaly) Add parameters on `.vimrc`
 * Please configure your remaining days of annual leave at the beginning of the year (i.e. as mentionned on the january paycheck)
 
+    ```vim
     let g:NbRemainingCP = 18
+    ```
 
 * if you don't have 25 days of annual leave (days of seniority, part time)
 
+    ```vim
     let g:NbCPPerYear = 22
+    ```
 
 * If you don't have 12 days of RTT
 
+    ```vim
     let g:NbRTPerYear = 9
+    ```
 
 ## Step 1 : Generate the timesheet for a given year
-
-    :call Bootstrap(2014)
-
-With prettify
 
 ```vim
 :call Bootstrap(2014)
@@ -43,7 +45,9 @@ Here is the list of values
 
 ## Step 3 : Automatic calculation of counters
 
-`:3,$normal ,cf`
+```vim
+:3,$normal ,cf
+```
 
 ## Example
                                                                                                    |    MENSUEL   |SOLDE
