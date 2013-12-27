@@ -6,6 +6,21 @@ yearly timesheet for Vim
 
 How to use it
 
+## Step 0 : (Optionnaly) Add parameters on `.vimrc`
+* Please configure your remaining days of annual leave at the beginning of the year (i.e. as mentionned on the january paycheck)
+
+    let g:NbRemainingCP = 18
+
+* if you don't have 25 days of annual leave (days of seniority, part time)
+
+    let g:NbCPPerYear = 22
+
+* If you don't have 12 days of RTT
+
+    let g:NbRTPerYear = 9
+
+if !exists("g:NbRemainingCP")
+
 ## Step 1 : Generate the timesheet for a given year
 
 `:call Bootstrap(2014)`

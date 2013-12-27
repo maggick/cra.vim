@@ -2,8 +2,17 @@ autocmd! BufWritePost cra.vim source ~/.vim/bundle/cra.vim/plugin/cra.vim
 
 let g:HeaderHeight = 2
 
-let g:NbCPPerYear = 22
-let g:NbRTPerYear = 9
+if !exists("g:NbCPPerYear")
+    let g:NbCPPerYear = 25
+endif
+
+if !exists("g:NbRTPerYear")
+    let g:NbRTPerYear = 12
+endif
+
+if !exists("g:NbRemainingCP")
+    let g:NbRemainingCP = 49
+endif
 
 let g:WWCol = 96
 let g:CPCol = WWCol + 3
@@ -104,7 +113,7 @@ endfunction
 function! GetTotalCP(month)
     if (a:month == 1)
         " Solde CP2 sur la paye de janvier
-        let prev = 18
+        let prev = g:NbRemainingCP
     elseif (a:month == 6)
         " remove code duplicate
         let prev = g:NbCPPerYear + GetValueAsNum(a:month - 1, 111)
