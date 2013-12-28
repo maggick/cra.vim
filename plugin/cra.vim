@@ -25,7 +25,7 @@ let g:FE = ['2014-1-1', '2014-4-21', '2014-5-1', '2014-5-8', '2014-5-29', '2014-
 
 function! IsPublicHoliday(year, month, day)
     let ret = 0
-    let i = 1
+    let i = 0
     while i < len(g:FE)
         if (a:year . '-' . a:month . '-' . a:day == g:FE[i])
             let ret = 1
