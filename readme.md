@@ -71,4 +71,4 @@ Here is the list of values
 
 ## Example (with colors)
 
-![example](http://imgur.com/J2htPjX)
+![example with colors](http://i.imgur.com/J2htPjX.png)
