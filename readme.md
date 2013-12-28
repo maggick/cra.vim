@@ -27,6 +27,8 @@ How to use it
 
 ## Step 1 : Generate the timesheet for a given year and a country
 
+Edit a new file with .cra extension
+
 ```vim
 :call Bootstrap(2014, 'fr')
 ```
@@ -66,3 +68,7 @@ Here is the list of values
     10 WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW|19  0  0  0  0|22  2
     11 WW XX XX WW WW WW WW XX XX XX XX WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX --|16  0  0  0  0|22  2
     12 XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW WW WW XX XX XX WW WW XX RT XX XX XX RT CP|14  1  2  0  0|21  0
+
+## Example (with colors)
+
+![example](http://imgur.com/J2htPjX)
