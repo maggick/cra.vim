@@ -154,4 +154,6 @@ function! GetTotalRT(month)
     return prev - substitute(NbRT(), ' ', '', 'g')
 endfunction
 
-nnoremap <leader>cf A<c-r>=Nbs()<cr><esc>
+nnoremap <leader>cm A<c-r>=Nbs()<cr><esc>
+nnoremap <leader>cy :3,$normal <leader>cm<cr>
+

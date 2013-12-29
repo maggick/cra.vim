@@ -49,9 +49,11 @@ Here is the list of values
 
 ## Step 3 : Automatic calculation of counters
 
-```vim
-:3,$normal ,cf
-```
+* For one month : `<leader>cm`
+
+* For one year : `<leader>cy`
+
+Please define your leader key to make it work.
 
 ## Example
                                                                                                    |    MENSUEL   |SOLDE
