@@ -1,5 +1,3 @@
-autocmd! BufWritePost cra.vim source ~/.vim/bundle/cra.vim/plugin/cra.vim
-
 let g:HeaderHeight = 2
 
 if !exists("g:NbCPPerYear")
