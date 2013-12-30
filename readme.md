@@ -35,7 +35,7 @@ Edit a new file with .cra extension
 
 Saturday and Sunday are pre-filled with `XX`
 
-Public Holiday are pre-filled with `FE`. Only french public holiday for year 2014 are known.
+Public Holiday are pre-filled with `FE`. Only french public holiday for years 2013 and 2014 are known.
 
 ## Step 2 : Fill the timesheet by replacing `--` with a value
 

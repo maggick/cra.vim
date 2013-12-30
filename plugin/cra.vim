@@ -21,17 +21,20 @@ let g:CECol = WWCol + 3 + 3 + 3
 let g:MACol = WWCol + 3 + 3 + 3 + 3
 
 "French Public Holiday
-let g:FE = ['2014-1-1', '2014-4-21', '2014-5-1', '2014-5-8', '2014-5-29', '2014-6-9', '2014-7-14', '2014-8-15', '2014-11-1', '2014-11-11', '2014-12-25']
+let g:FE = {'2013':['1-1', '4-1', '5-1', '5-8', '5-9', '5-20', '7-14', '8-15', '11-1', '11-11', '12-25'], 
+           \'2014':['1-1', '4-21', '5-1', '5-8', '5-29', '6-9', '7-14', '8-15', '11-1', '11-11', '12-25']}
 
 function! IsPublicHoliday(year, month, day)
     let ret = 0
-    let i = 0
-    while i < len(g:FE)
-        if (a:year . '-' . a:month . '-' . a:day == g:FE[i])
-            let ret = 1
-        endif
-        let i += 1 
-    endwhile
+    if has_key(g:FE, a:year)
+        let i = 0
+        while i < len(g:FE[a:year])
+            if (a:month . '-' . a:day == g:FE[a:year][i])
+                let ret = 1
+            endif
+            let i += 1 
+        endwhile
+    endif
     return ret
 endfunction
 
