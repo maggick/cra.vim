@@ -9,7 +9,7 @@ if !exists("g:NbRTPerYear")
 endif
 
 if !exists("g:NbRemainingCP")
-    let g:NbRemainingCP = 49
+    let g:NbRemainingCP = 0
 endif
 
 let g:WWCol = 96
