@@ -54,6 +54,7 @@ Here is the list of values
 * For one year : `<leader>cy`
 
 Please define your leader key to make it work.
+Default leader key is `\`.
 
 ## Example
                                                                                                    |    MENSUEL   |SOLDE
